@@ -9,8 +9,16 @@ export class Entity<Props> {
     return this._id;
   }
 
-  constructor(props: Props, id?: string) {
+  /**
+   * Construtor da Entidade. Ele é protegido (protected), então só pode ser chamado
+   * pela classe Entity e as classes que herdam Entity. Isso significa que não é possível
+   * instanciar (new Entity()) em outros arquivos.
+   *
+   * @param props {Props}
+   * @param id {UniqueEntityId}
+   */
+  protected constructor(props: Props, id?: UniqueEntityId) {
     this.props = props;
-    this._id = new UniqueEntityId();
+    this._id = id ?? new UniqueEntityId();
   }
 }
