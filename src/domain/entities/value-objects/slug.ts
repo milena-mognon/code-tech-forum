@@ -1,4 +1,6 @@
-export class Slug {
+import { ValueObject } from "../../../core/value-object/value-object";
+
+export class Slug implements ValueObject {
   public value: string;
 
   constructor(value: string) {
