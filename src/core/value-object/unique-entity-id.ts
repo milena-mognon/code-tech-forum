@@ -1,5 +1,5 @@
-import { randomUUID } from "node:crypto";
-import { ValueObject } from "./value-object";
+import { randomUUID } from 'node:crypto';
+import { ValueObject } from './value-object';
 
 export class UniqueEntityId implements ValueObject {
   private _value: string;

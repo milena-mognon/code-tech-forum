@@ -1,8 +1,8 @@
-import { Slug } from "./value-objects/slug";
-import { Entity } from "@/core/entities/entity";
-import { UniqueEntityId } from "@/core/value-object/unique-entity-id";
-import { Optional } from "@/core/types/optional";
-import dayjs from "dayjs";
+import { Slug } from './value-objects/slug';
+import { Entity } from '@/core/entities/entity';
+import { UniqueEntityId } from '@/core/value-object/unique-entity-id';
+import { Optional } from '@/core/types/optional';
+import dayjs from 'dayjs';
 
 interface QuestionProps {
   authorId: UniqueEntityId;
@@ -16,8 +16,8 @@ interface QuestionProps {
 
 export class Question extends Entity<QuestionProps> {
   static create(
-    props: Optional<QuestionProps, "createdAt" | "slug">,
-    id?: UniqueEntityId
+    props: Optional<QuestionProps, 'createdAt' | 'slug'>,
+    id?: UniqueEntityId,
   ) {
     return new Question(
       {
@@ -25,7 +25,7 @@ export class Question extends Entity<QuestionProps> {
         slug: props.slug ?? Slug.createFromText(props.title),
         createdAt: new Date(),
       },
-      id
+      id,
     );
   }
 
@@ -50,7 +50,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get isNew() {
-    return dayjs().diff(this.createdAt, "days") <= 3;
+    return dayjs().diff(this.createdAt, 'days') <= 3;
   }
 
   set content(content: string) {
@@ -70,7 +70,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get excerpt() {
-    return this.content.substring(0, 120).trim().concat("...");
+    return this.content.substring(0, 120).trim().concat('...');
   }
 
   private touch() {

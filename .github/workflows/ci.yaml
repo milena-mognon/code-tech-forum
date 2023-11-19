@@ -22,3 +22,6 @@ jobs:
 
       - name: Unit Tests
         run: yarn test
+
+      - name: Lint Check
+        run: yarn lint

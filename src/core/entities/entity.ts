@@ -1,4 +1,4 @@
-import { UniqueEntityId } from "../value-object/unique-entity-id";
+import { UniqueEntityId } from '../value-object/unique-entity-id';
 
 export class Entity<Props> {
   // Props representa um valor genérico (generic), comumente chamado de T
