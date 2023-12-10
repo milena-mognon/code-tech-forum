@@ -3,8 +3,12 @@ import { ValueObject } from '@/core/value-object/value-object';
 export class Slug implements ValueObject {
   public value: string;
 
-  constructor(value: string) {
+  private constructor(value: string) {
     this.value = value;
+  }
+
+  static create(slug: string) {
+    return new Slug(slug);
   }
 
   /**
