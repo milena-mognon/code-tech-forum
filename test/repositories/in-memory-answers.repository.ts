@@ -2,6 +2,13 @@ import { AnswersRepository } from '@/domain/forum/application/repositories/answe
 import { Answer } from '@/domain/forum/enterprise/entities/answer';
 
 export class InMemoryAnswersRepository implements AnswersRepository {
+  public items: Answer[] = [];
+
+  async save(answer: Answer): Promise<void> {
+    const itemIndex = this.items.findIndex((item) => item.id === answer.id);
+    this.items[itemIndex] = answer;
+  }
+
   async delete(answer: Answer): Promise<void> {
     // encontra o index do item
     const itemIndex = this.items.findIndex((item) => item.id === answer.id);
@@ -16,8 +23,6 @@ export class InMemoryAnswersRepository implements AnswersRepository {
     }
     return answer;
   }
-
-  public items: Answer[] = [];
 
   async create(answer: Answer) {
     this.items.push(answer);
