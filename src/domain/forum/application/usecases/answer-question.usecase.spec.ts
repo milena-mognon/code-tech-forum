@@ -4,20 +4,20 @@ import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers.r
 let inMemoryQuestionRepository: InMemoryAnswersRepository;
 let sut: AnswerQuestionUseCase;
 
-describe('Create Question', () => {
+describe('Create Answer', () => {
   beforeEach(() => {
     inMemoryQuestionRepository = new InMemoryAnswersRepository();
     sut = new AnswerQuestionUseCase(inMemoryQuestionRepository);
   });
 
-  test('create an answer', async () => {
-    const { answer } = await sut.execute({
+  test('should be able to create an answer', async () => {
+    const result = await sut.execute({
       instructorId: '1',
       questionId: '1',
       content: 'Nova Resposta',
     });
 
-    expect(answer.id).toBeTruthy();
-    expect(answer.content).toEqual('Nova Resposta');
+    expect(result.isRight()).toBe(true);
+    expect(inMemoryQuestionRepository.items[0]).toEqual(result.value?.answer);
   });
 });

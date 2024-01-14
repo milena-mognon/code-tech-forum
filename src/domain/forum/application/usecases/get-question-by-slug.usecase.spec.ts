@@ -2,6 +2,7 @@ import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questio
 import { GetQuestionBySlugUseCase } from './get-question-by-slug.usecase';
 import { makeNewQuestion } from 'test/factories/make-new-question';
 import { Slug } from '../../enterprise/entities/value-objects/slug';
+import { Question } from '../../enterprise/entities/question';
 
 let inMemoryQuestionRepository: InMemoryQuestionsRepository;
 let sut: GetQuestionBySlugUseCase;
@@ -21,11 +22,11 @@ describe('Get Question by Slug', () => {
 
     await inMemoryQuestionRepository.create(newQuestion);
 
-    const { question } = await sut.execute({
+    const result = await sut.execute({
       slug: 'example-question',
     });
 
-    expect(question.id).toBeTruthy();
-    expect(question.title).toBe(newQuestion.title);
+    expect(result.isRight()).toBe(true);
+    expect(inMemoryQuestionRepository.items[0]).toEqual(result.value?.question);
   });
 });
