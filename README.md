@@ -23,3 +23,14 @@ No primeiro momento está sendo desenvolvido a parte de domínio da aplicação.
 Esse projeto contata também com pipelines de integração continua, visando a boa qualidade do código e garantindo o funcionamento com a execução dos testes,para isso será utilizado o Github Actions.
 
 Outro objetivo para isso é o estudo sobre essa ferramenta e sua aplicação no dia a dia em softwares reais.
+
+## DDD
+
+### Aggregate
+
+Conjunto de entidades que são manipuladas ao mesmo tempo.
+
+### WatchedList
+
+Lista Observada
+Principalmente usado em edições

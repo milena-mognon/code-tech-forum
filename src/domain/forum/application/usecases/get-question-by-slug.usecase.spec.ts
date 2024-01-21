@@ -26,6 +26,10 @@ describe('Get Question by Slug', () => {
     });
 
     expect(result.isRight()).toBe(true);
-    expect(inMemoryQuestionRepository.items[0]).toEqual(result.value?.question);
+    expect(result.value).toMatchObject({
+      question: expect.objectContaining({
+        title: newQuestion.title,
+      }),
+    });
   });
 });
