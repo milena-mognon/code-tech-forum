@@ -15,4 +15,8 @@ export class UniqueEntityId implements ValueObject {
   toValue() {
     return this._value;
   }
+
+  public equals(id: UniqueEntityId) {
+    return id.toValue() === this._value;
+  }
 }
