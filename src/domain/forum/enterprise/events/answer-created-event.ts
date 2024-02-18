@@ -1,5 +1,5 @@
 import { UniqueEntityId } from '@/core/value-object/unique-entity-id';
-import { Answer } from '../answer';
+import { Answer } from '../entities/answer';
 import { DomainEvents } from '@/core/events/domain-events';
 
 export class AnswerCreatedEvent implements DomainEvents {
